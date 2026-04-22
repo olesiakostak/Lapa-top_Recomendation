@@ -2,3 +2,4 @@
 core/settings.py
 db.sqlite3
 .vscode/settings.json
+/data
