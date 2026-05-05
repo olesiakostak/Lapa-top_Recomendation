@@ -34,6 +34,13 @@ class OperationSystem(models.Model):
 
     def __str__(self):
         return f"OS: {self.name}"
+    
+
+class Graphics(models.Model):
+    name = models.CharField(max_length=512, verbose_name='GPU name')
+
+    def __str__(self):
+        return f'Graphics {self.name}'
 
 
 class Laptop(models.Model):
@@ -44,6 +51,7 @@ class Laptop(models.Model):
     ram = models.ForeignKey(RamMemory, on_delete=models.CASCADE)
     storage = models.ForeignKey(StorageMemory, on_delete=models.CASCADE)
     display = models.ForeignKey(Display, on_delete=models.CASCADE)
+    graphics = models.ForeignKey(Graphics, null=True, blank=True, on_delete=models.SET_NULL)
     os = models.ForeignKey(OperationSystem, null=True, blank=True, on_delete=models.SET_NULL)
     warranty = models.IntegerField(verbose_name='Warranty (In Years)')
 
